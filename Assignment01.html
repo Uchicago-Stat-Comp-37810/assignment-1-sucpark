@@ -177,7 +177,7 @@ fn &lt;- function(i)
   return (fn(i-1)+fn(i-2))
 }
 
-fnValue&lt;-{}
+fnValue&lt;-{} #Store Fibonacci values
 for(i in n)
 {
   fnValue&lt;-c(fnValue, fn(i))
@@ -310,7 +310,7 @@ answer</code></pre>
 <pre class="r"><code>Fib1&lt;-1
 Fib2&lt;-1
 Fibonacci&lt;-c(Fib1,Fib2)
-while(Fib2&lt;300)
+while(Fib2&lt;300)  ##Original Fibonacci
 {
   Fibonacci&lt;-c(Fibonacci,Fib2)
   oldFib2&lt;-Fib2
@@ -319,11 +319,11 @@ while(Fib2&lt;300)
 }
 print(&quot;Original Fibonacci Function&quot;)</code></pre>
 <pre><code>## [1] &quot;Original Fibonacci Function&quot;</code></pre>
-<pre class="r"><code>Fibonacci[-1]</code></pre>
+<pre class="r"><code>Fibonacci[-1] ## The value at the first is not required</code></pre>
 <pre><code>##  [1]   1   1   2   3   5   8  13  21  34  55  89 144 233</code></pre>
 <pre class="r"><code>#Modified Fibonacci
 Fibonacci&lt;-c(1,1)
-while (Fibonacci[length(Fibonacci)]&lt;300)
+while (Fibonacci[length(Fibonacci)]&lt;300)  #Modified Fibonacci
 {
   Fibonacci&lt;-c(Fibonacci,Fibonacci[length(Fibonacci)])
   Fibonacci[1]&lt;-Fibonacci[length(Fibonacci)]
@@ -333,7 +333,7 @@ while (Fibonacci[length(Fibonacci)]&lt;300)
 }
 print(&quot;Modified Fibonacci Function&quot;)</code></pre>
 <pre><code>## [1] &quot;Modified Fibonacci Function&quot;</code></pre>
-<pre class="r"><code>Fibonacci[-length(Fibonacci)]</code></pre>
+<pre class="r"><code>Fibonacci[-length(Fibonacci)] #The value at the last is not required</code></pre>
 <pre><code>##  [1]   1   1   2   3   5   8  13  21  34  55  89 144 233</code></pre>
 </div>
 <div id="ex04-05" class="section level1">
@@ -376,7 +376,7 @@ i</code></pre>
     {
       p&lt;-sieve[1]
       primes&lt;-c(primes,p)
-      sieve&lt;-sieve[(sieve %% p) != 0]
+      sieve&lt;-sieve[(sieve %% p) != 0] #Element which is not divided by p can be stored in sieve again.
       num&lt;-num+1
     }
     return(primes)
@@ -650,24 +650,24 @@ directpoly(2,coef)</code></pre>
 <h2>(a)</h2>
 <pre class="r"><code>system.time(directpoly(x=seq(-10,10, length=5000000), c(1,-2,2,3,4,6,7)))</code></pre>
 <pre><code>##    user  system elapsed 
-##   1.124   0.090   1.217</code></pre>
+##   1.103   0.076   1.181</code></pre>
 <pre class="r"><code># elapsed time : total consuming time for the code
 # user time + system time = elapsed time
 # user time : only for the program
 # system time : time for OS
 system.time(hornerpoly(x=seq(-10,10,length=5000000),c(1,-2,2,3,4,6,7)))</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.149   0.044   0.194</code></pre>
+##   0.152   0.032   0.184</code></pre>
 <p>We can find that hornerpoly is much faster than directpoly</p>
 </div>
 <div id="b-5" class="section level2">
 <h2>(b)</h2>
 <pre class="r"><code>system.time(directpoly(x=seq(-10,10, length=5000000), c(2,17,-3)))</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.192   0.026   0.218</code></pre>
+##   0.196   0.020   0.216</code></pre>
 <pre class="r"><code>system.time(hornerpoly(x=seq(-10,10,length=5000000),c(2,17,-3)))</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.091   0.020   0.111</code></pre>
+##   0.089   0.013   0.102</code></pre>
 <p>As the number of polynomial coefficients is smaller, the time difference of two methods becomes also smaller.</p>
 </div>
 </div>

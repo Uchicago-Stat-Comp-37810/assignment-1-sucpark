@@ -21,7 +21,7 @@ fn <- function(i)
   return (fn(i-1)+fn(i-2))
 }
 
-fnValue<-{}
+fnValue<-{} #Store Fibonacci values
 for(i in n)
 {
   fnValue<-c(fnValue, fn(i))
@@ -137,7 +137,7 @@ Mortage<-function(n,P,open)
 Fib1<-1
 Fib2<-1
 Fibonacci<-c(Fib1,Fib2)
-while(Fib2<300)
+while(Fib2<300)  ##Original Fibonacci
 {
   Fibonacci<-c(Fibonacci,Fib2)
   oldFib2<-Fib2
@@ -145,10 +145,10 @@ while(Fib2<300)
   Fib1<-oldFib2
 }
 print("Original Fibonacci Function")
-Fibonacci[-1]
+Fibonacci[-1] ## The value at the first is not required
 #Modified Fibonacci
 Fibonacci<-c(1,1)
-while (Fibonacci[length(Fibonacci)]<300)
+while (Fibonacci[length(Fibonacci)]<300)  #Modified Fibonacci
 {
   Fibonacci<-c(Fibonacci,Fibonacci[length(Fibonacci)])
   Fibonacci[1]<-Fibonacci[length(Fibonacci)]
@@ -157,7 +157,7 @@ while (Fibonacci[length(Fibonacci)]<300)
   Fibonacci[1]<-1
 }
 print("Modified Fibonacci Function")
-Fibonacci[-length(Fibonacci)]
+Fibonacci[-length(Fibonacci)] #The value at the last is not required
 ```
 
 #4.1.3 ex04 & 05
@@ -198,7 +198,7 @@ E1 <- function(n){
     {
       p<-sieve[1]
       primes<-c(primes,p)
-      sieve<-sieve[(sieve %% p) != 0]
+      sieve<-sieve[(sieve %% p) != 0] #Element which is not divided by p can be stored in sieve again.
       num<-num+1
     }
     return(primes)
